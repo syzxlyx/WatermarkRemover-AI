@@ -24,9 +24,22 @@
 
 ## Installation rapide
 
-Consultez le fichier [DEMARRAGE_RAPIDE.md](./DEMARRAGE_RAPIDE.md) pour une installation et une mise en route rapides.
+### 🚀 Installation automatique
 
-Pour une installation détaillée, référez-vous au fichier [INSTALLATION_FR.md](./INSTALLATION_FR.md).
+```bash
+# Mac M1/M2
+./setup_mac.sh
+
+# Linux/云服务器
+conda env create -f environment_cloud.yml
+conda activate py312aiwatermark
+./download_models.sh --recommended
+```
+
+**文档：**
+- [环境配置指南](./ENVIRONMENT_SETUP.md) - 详细安装说明
+- [快速开始](./DEMARRAGE_RAPIDE.md) - 法语快速指南
+- [安装说明](./INSTALLATION_FR.md) - 法语详细安装
 
 ### Prérequis
 

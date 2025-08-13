@@ -122,5 +122,23 @@ pip list | grep -q transformers || pip install transformers
 pip list | grep -q iopaint || pip install iopaint
 pip list | grep -q opencv-python-headless || pip install opencv-python-headless
 
+# Download IOPaint models on first run
+echo "检查并下载IOPaint模型..."
+python -c "
+import os
+from iopaint.model_manager import ModelManager
+
+# 检查模型是否已下载
+models_to_download = ['lama', 'fcf', 'mat']
+for model in models_to_download:
+    try:
+        # 尝试加载模型，如果失败则下载
+        ModelManager.download_model(model)
+        print(f'✅ {model} 模型准备就绪')
+    except Exception as e:
+        print(f'⚠️  {model} 模型下载失败: {e}')
+        print(f'可稍后手动下载: iopaint download --model {model}')
+" 2>/dev/null || echo "模型检查跳过（可能已存在）"
+
 # Run remwm.py with passed arguments
 python remwm.py "${SCRIPT_ARGS[@]}"
